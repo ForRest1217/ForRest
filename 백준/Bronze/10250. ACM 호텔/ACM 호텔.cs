@@ -1,16 +1,13 @@
 int a = int.Parse(Console.ReadLine());
 for (int i = 0; i < a; i++)
 {
-    string[] b = Console.ReadLine().Split();
-    int c = int.Parse(b[0]);
-    int d = int.Parse(b[1]);
-    int e = int.Parse(b[2]);
-    int f = e % c;
-    int g = e / c + 1;
-    if (f == 0)
+    int[] b = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    int c = b[2] % b[0];
+    int d = b[2] / b[0] + 1;
+    if (c == 0)
     {
-        f = c;
-        g = e / c;
+        c = b[0];
+        d = b[2] / b[0];
     }
-    Console.WriteLine($"{f}{g:D2}");
+    Console.WriteLine($"{c}{d:D2}");
 }
