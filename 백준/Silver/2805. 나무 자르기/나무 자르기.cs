@@ -1,5 +1,5 @@
 int[] a = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-int[] b = Console.ReadLine().Split().Select(int.Parse).ToArray();
+int[] b = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
 
 int c = 0;
 int d = 0;
