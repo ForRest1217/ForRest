@@ -2,6 +2,7 @@ internal class Program
 {
     static int[,,] b;
     static bool[,,] visited;
+
     static int[] moveX = { 1, -1, 0, 0, 0, 0 };
     static int[] moveY = { 0, 0, 1, -1, 0, 0 };
     static int[] moveZ = { 0, 0, 0, 0, 1, -1 };
@@ -9,6 +10,7 @@ internal class Program
     static void Main()
     {
         int[] a = Array.ConvertAll(Console.ReadLine()!.Split(), int.Parse);
+
         b = new int[a[0], a[1], a[2]];
         visited = new bool[a[0], a[1], a[2]];
 
@@ -59,6 +61,7 @@ internal class Program
                     if (b[k, j, i] == 1)
                     {
                         queue.Enqueue((k, j, i));
+                        visited[k, j, i] = true;
                     }
                 }
             }
@@ -78,8 +81,9 @@ internal class Program
                     xValue >= a[0] || yValue >= a[1] || zValue >= a[2])
                     continue;
 
-                if (b[xValue, yValue, zValue] == 0)
+                if (!visited[xValue, yValue, zValue] && b[xValue, yValue, zValue] == 0)
                 {
+                    visited[xValue, yValue, zValue] = true;
                     b[xValue, yValue, zValue] = b[x, y, z] + 1;
                     queue.Enqueue((xValue, yValue, zValue));
                 }
